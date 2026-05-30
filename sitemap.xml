@@ -6,4 +6,22 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://billy122333.github.io/freelance-rate-calculator/freelance-hourly-rate-calculator.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://billy122333.github.io/freelance-rate-calculator/project-quote-calculator.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://billy122333.github.io/freelance-rate-calculator/how-much-should-i-charge-as-a-freelancer.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
