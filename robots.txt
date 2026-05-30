@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://billy122333.github.io/freelance-rate-calculator/sitemap.xml
