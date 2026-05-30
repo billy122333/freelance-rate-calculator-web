@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Freelance Rate Calculator</title>
+    <meta
+      name="description"
+      content="Calculate a sustainable freelance hourly rate and project quote without guessing."
+    />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Web MVP · low-cost validation</p>
+          <h1>Quote freelance work with less guessing and more margin.</h1>
+          <p class="lede">
+            This tool turns your target income, workload, and project scope into
+            a rate you can actually defend. No spreadsheet cleanup, no back-of-the-napkin math.
+          </p>
+          <div class="hero-proof">
+            <span class="proof-chip">Built for solo freelancers</span>
+            <span class="proof-chip">No login</span>
+            <span class="proof-chip">Under 60 seconds</span>
+          </div>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#calculator">Open Calculator</a>
+            <a class="button button-secondary" href="#pro">See Pro Path</a>
+          </div>
+        </div>
+        <aside class="hero-note hero-preview">
+          <p class="eyebrow eyebrow-inverse">Example Result</p>
+          <h2>Your client sees one number. You know what it needs to cover.</h2>
+          <div class="preview-quote-card">
+            <span class="preview-label">Suggested quote</span>
+            <strong class="preview-value">NT$31,118</strong>
+            <p class="preview-note">Based on a 20-hour design project with tax reserve and revision buffer included.</p>
+          </div>
+          <div class="preview-mini-grid">
+            <div class="preview-mini-card">
+              <span>Hourly floor</span>
+              <strong>NT$1,556/hr</strong>
+            </div>
+            <div class="preview-mini-card">
+              <span>After reserve</span>
+              <strong>NT$26,450</strong>
+            </div>
+          </div>
+        </aside>
+      </header>
+
+      <section class="value-strip">
+        <article class="value-card">
+          <span class="value-index">01</span>
+          <h2>Start from your target life, not random market averages.</h2>
+          <p>Set the income you need, then work backward into a rate that supports it.</p>
+        </article>
+        <article class="value-card">
+          <span class="value-index">02</span>
+          <h2>Keep hidden business costs visible.</h2>
+          <p>Software, admin, equipment, and tax reserve stay inside the price instead of eating your margin later.</p>
+        </article>
+        <article class="value-card">
+          <span class="value-index">03</span>
+          <h2>Walk away with a number you can actually quote.</h2>
+          <p>The result is simple enough to use immediately, but grounded enough to trust.</p>
+        </article>
+      </section>
+
+      <main class="layout" id="calculator">
+        <section class="panel panel-form">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Step 1</p>
+              <h2>Pick a starting point</h2>
+              <p class="section-subcopy">Choose the closest preset, then adjust only what matters for this quote.</p>
+            </div>
+            <div class="preset-group" aria-label="Freelancer presets">
+              <button class="chip is-active" data-preset="designer">Designer</button>
+              <button class="chip" data-preset="developer">Developer</button>
+              <button class="chip" data-preset="photographer">Photographer</button>
+              <button class="chip" data-preset="coach">Coach</button>
+            </div>
+          </div>
+
+          <form id="calculator-form" novalidate>
+            <div class="form-stage">
+              <div class="stage-badge">Step 2</div>
+              <div>
+                <h3 class="stage-title">Enter the essentials</h3>
+                <p class="stage-copy">These three numbers do most of the work. Start here before touching the advanced assumptions.</p>
+              </div>
+            </div>
+
+            <div class="grid grid-primary">
+              <label class="field">
+                <span>Monthly take-home target</span>
+                <input id="monthlyIncomeTarget" name="monthlyIncomeTarget" type="number" min="0" step="1000" />
+                <small class="field-note">What you want left after your working month does its job.</small>
+              </label>
+              <label class="field">
+                <span>Billable hours / month</span>
+                <input id="billableHoursPerMonth" name="billableHoursPerMonth" type="number" min="1" step="1" />
+                <small class="field-note">Not calendar hours. Only the hours you can realistically charge for.</small>
+              </label>
+              <label class="field field-spotlight">
+                <span>Estimated project hours</span>
+                <input id="projectHours" name="projectHours" type="number" min="1" step="0.5" />
+                <small class="field-note">The estimate you would usually tell yourself before revisions sneak in.</small>
+              </label>
+            </div>
+
+            <details class="advanced-panel">
+              <summary>
+                <span>Advanced assumptions</span>
+                <small>Costs, tax reserve, risk buffer, and currency</small>
+              </summary>
+              <div class="grid grid-advanced">
+                <label class="field">
+                  <span>Monthly business costs</span>
+                  <input id="monthlyBusinessCosts" name="monthlyBusinessCosts" type="number" min="0" step="500" />
+                  <small class="field-note">Subscriptions, admin, equipment, software, rent, and other business overhead.</small>
+                </label>
+                <label class="field">
+                  <span>Tax reserve (%)</span>
+                  <input id="taxReservePercent" name="taxReservePercent" type="number" min="0" max="80" step="1" />
+                  <small class="field-note">A safety reserve you do not want to pretend belongs to you yet.</small>
+                </label>
+                <label class="field">
+                  <span>Revision / risk buffer (%)</span>
+                  <input id="riskBufferPercent" name="riskBufferPercent" type="number" min="0" max="100" step="1" />
+                  <small class="field-note">Protection for back-and-forth, surprises, and underestimation.</small>
+                </label>
+                <label class="field">
+                  <span>Currency label</span>
+                  <input id="currencyLabel" name="currencyLabel" type="text" value="NT$" maxlength="6" />
+                  <small class="field-note">Use a simple label such as NT$, US$, or €.</small>
+                </label>
+              </div>
+            </details>
+
+            <div class="form-actions">
+              <button class="button button-primary" type="submit">Reveal my quote</button>
+              <button class="button button-secondary" id="resetButton" type="button">Reset</button>
+            </div>
+            <p id="errorMessage" class="error-message" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <section class="panel panel-results">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Result</p>
+              <h2>Your pricing floor</h2>
+              <p class="section-subcopy">This is the number that stops “sounds okay” pricing from quietly undercutting your month.</p>
+            </div>
+          </div>
+
+          <section class="pricing-constellation" aria-label="Live pricing constellation">
+            <div class="constellation-copy">
+              <p class="eyebrow">Live Pricing Map</p>
+              <h3>Your quote as a moving system</h3>
+              <p>
+                Instead of one dead number, watch the quote react to the forces underneath it: income pressure,
+                time capacity, tax reserve, business cost, and risk buffer.
+              </p>
+            </div>
+            <div class="constellation-board" id="constellationBoard">
+              <svg class="constellation-lines" viewBox="0 0 760 520" preserveAspectRatio="none" aria-hidden="true">
+                <line x1="380" y1="260" x2="146" y2="132"></line>
+                <line x1="380" y1="260" x2="618" y2="122"></line>
+                <line x1="380" y1="260" x2="646" y2="368"></line>
+                <line x1="380" y1="260" x2="146" y2="390"></line>
+                <line x1="380" y1="260" x2="286" y2="66"></line>
+                <line x1="380" y1="260" x2="508" y2="64"></line>
+              </svg>
+
+              <article class="constellation-node node-anchor node-income" id="nodeIncome">
+                <span class="node-kicker">Income target</span>
+                <strong id="nodeIncomeValue">-</strong>
+              </article>
+
+              <article class="constellation-node node-anchor node-hours" id="nodeHours">
+                <span class="node-kicker">Billable hours</span>
+                <strong id="nodeHoursValue">-</strong>
+              </article>
+
+              <article class="constellation-node node-anchor node-costs" id="nodeCosts">
+                <span class="node-kicker">Business costs</span>
+                <strong id="nodeCostsValue">-</strong>
+              </article>
+
+              <article class="constellation-node node-anchor node-project" id="nodeProject">
+                <span class="node-kicker">Project hours</span>
+                <strong id="nodeProjectValue">-</strong>
+              </article>
+
+              <article class="constellation-node node-anchor node-tax" id="nodeTax">
+                <span class="node-kicker">Tax reserve</span>
+                <strong id="nodeTaxValue">-</strong>
+              </article>
+
+              <article class="constellation-node node-anchor node-buffer" id="nodeBuffer">
+                <span class="node-kicker">Risk buffer</span>
+                <strong id="nodeBufferValue">-</strong>
+              </article>
+
+              <article class="constellation-node node-core" id="nodeQuote">
+                <span class="node-kicker">Suggested quote</span>
+                <strong id="nodeQuoteValue">-</strong>
+                <small>Live output</small>
+              </article>
+            </div>
+          </section>
+
+          <div class="quote-stage">
+            <div class="quote-stage-main">
+              <span class="quote-stage-label">Suggested quote</span>
+              <strong class="quote-stage-value" id="quoteHeroValue">-</strong>
+              <p class="quote-stage-copy">
+                This is the number you should be comfortable saying out loud before rush fees, extra deliverables,
+                or expanded scope.
+              </p>
+            </div>
+            <div class="quote-stage-side">
+              <div class="quote-stage-pill">
+                <span>Use case</span>
+                <strong>Client-facing floor</strong>
+              </div>
+              <div class="quote-stage-pill">
+                <span>Built from</span>
+                <strong>Income, time, tax, and risk</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card">
+              <span class="stat-label">Break-even hourly rate</span>
+              <strong class="stat-value" id="breakEvenRate">-</strong>
+              <p class="stat-note">Covers costs and target take-home before extra quote buffer.</p>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Sustainable hourly rate</span>
+              <strong class="stat-value" id="hourlyRate">-</strong>
+              <p class="stat-note">Includes your revision / risk buffer.</p>
+            </article>
+            <article class="stat-card stat-card-accent">
+              <span class="stat-label">Suggested project quote</span>
+              <strong class="stat-value" id="projectQuote">-</strong>
+              <p class="stat-note">Use this as your floor before special add-ons.</p>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">After-tax reserve</span>
+              <strong class="stat-value" id="afterTaxRevenue">-</strong>
+              <p class="stat-note">Estimated project revenue after tax reserve is set aside.</p>
+            </article>
+          </div>
+
+          <div class="quote-anatomy">
+            <div class="quote-anatomy-copy">
+              <p class="eyebrow">Quote Anatomy</p>
+              <h3>What the number is actually carrying</h3>
+              <p>
+                A better quote feels less arbitrary. This visual splits the project price into sustainability,
+                reserve, and protection against underestimation.
+              </p>
+            </div>
+            <div class="quote-anatomy-visual">
+              <div class="anatomy-bar">
+                <div class="anatomy-segment anatomy-segment-base" id="segmentBase"></div>
+                <div class="anatomy-segment anatomy-segment-tax" id="segmentTax"></div>
+                <div class="anatomy-segment anatomy-segment-buffer" id="segmentBuffer"></div>
+              </div>
+              <div class="anatomy-meta">
+                <div class="anatomy-meta-row">
+                  <span class="anatomy-dot anatomy-dot-base"></span>
+                  <div>
+                    <strong>Base sustainability</strong>
+                    <small id="segmentBaseLabel">-</small>
+                  </div>
+                </div>
+                <div class="anatomy-meta-row">
+                  <span class="anatomy-dot anatomy-dot-tax"></span>
+                  <div>
+                    <strong>Tax reserve</strong>
+                    <small id="segmentTaxLabel">-</small>
+                  </div>
+                </div>
+                <div class="anatomy-meta-row">
+                  <span class="anatomy-dot anatomy-dot-buffer"></span>
+                  <div>
+                    <strong>Risk buffer lift</strong>
+                    <small id="segmentBufferLabel">-</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="insight-banner">
+            <strong>Use the quote as your floor, not your dream price.</strong>
+            <p>If the scope feels uncertain, raise the buffer before you lower the quote.</p>
+          </div>
+
+          <div class="summary-card">
+            <div class="summary-head">
+              <h3>Quote summary</h3>
+              <button class="button button-secondary" id="copySummaryButton" type="button">Copy summary</button>
+            </div>
+            <p id="summaryText" class="summary-text">
+              Fill out the calculator to generate a client-facing pricing summary.
+            </p>
+            <p id="copyStatus" class="copy-status" aria-live="polite"></p>
+          </div>
+        </section>
+      </main>
+
+      <section class="panel panel-pro" id="pro">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Monetization Boundary</p>
+            <h2>What a Pro version can unlock</h2>
+            <p class="section-subcopy">We keep the first version generous, but the paid version should save time across repeated quotes.</p>
+          </div>
+        </div>
+        <div class="pro-grid">
+          <article class="pro-card">
+            <h3>Save quote scenarios</h3>
+            <p>Keep separate pricing models for different services, niches, or clients.</p>
+          </article>
+          <article class="pro-card">
+            <h3>Branded PDF export</h3>
+            <p>Turn a quote into a clean deliverable you can send immediately.</p>
+          </article>
+          <article class="pro-card">
+            <h3>Client presets</h3>
+            <p>Reuse tax, margin, and complexity assumptions instead of entering them every time.</p>
+          </article>
+        </div>
+        <div class="pro-cta">
+          <p>
+            Want the Pro version first when it ships? Use the contact link below to request early access or ask for
+            a niche version for your profession.
+          </p>
+          <a
+            class="button button-primary"
+            href="mailto:kaipoforwork@gmail.com?subject=Freelance%20Rate%20Calculator%20Pro%20interest"
+            >Request Pro access</a
+          >
+        </div>
+      </section>
+
+      <section class="design-finale">
+        <div class="design-finale-copy">
+          <p class="eyebrow">Design Direction</p>
+          <h2>More instrument panel, less spreadsheet.</h2>
+          <p>
+            The point is not to decorate the calculator. The point is to make the result feel valuable enough that
+            the user trusts it, remembers it, and wants the more advanced version.
+          </p>
+        </div>
+        <div class="design-finale-grid">
+          <article class="finale-card finale-card-dark">
+            <span>First impression</span>
+            <strong>Big quote reveal before detail overload</strong>
+          </article>
+          <article class="finale-card finale-card-soft">
+            <span>Explanation</span>
+            <strong>Visual anatomy instead of hidden math</strong>
+          </article>
+          <article class="finale-card finale-card-accent">
+            <span>Future path</span>
+            <strong>A stronger shell for Pro export, saved scenarios, and niche presets</strong>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+  </html>
