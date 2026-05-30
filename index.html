@@ -3,12 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Freelance Rate Calculator</title>
+    <title>Freelance Rate Calculator & Project Quote Calculator</title>
     <meta
       name="description"
-      content="Calculate a sustainable freelance hourly rate and project quote without guessing."
+      content="Use this freelance rate calculator to estimate a sustainable hourly rate and project quote based on income target, billable hours, business costs, tax reserve, and scope."
+    />
+    <meta name="robots" content="index,follow" />
+    <link
+      rel="canonical"
+      href="https://billy122333.github.io/freelance-rate-calculator/"
+    />
+    <meta
+      property="og:title"
+      content="Freelance Rate Calculator & Project Quote Calculator"
+    />
+    <meta
+      property="og:description"
+      content="Estimate a sustainable freelance hourly rate and project quote without relying on guesswork."
+    />
+    <meta
+      property="og:url"
+      content="https://billy122333.github.io/freelance-rate-calculator/"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Freelance Rate Calculator" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Freelance Rate Calculator & Project Quote Calculator"
+    />
+    <meta
+      name="twitter:description"
+      content="Calculate a freelance hourly rate and client-ready project quote from your real income target and workload."
     />
     <link rel="stylesheet" href="./src/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Freelance Rate Calculator",
+        "url": "https://billy122333.github.io/freelance-rate-calculator/",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "description": "A web calculator that helps freelancers estimate a sustainable hourly rate and project quote.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
   </head>
   <body>
     <div class="page-shell">
@@ -377,8 +421,76 @@
           </article>
         </div>
       </section>
+
+      <section class="panel panel-seo-copy" id="about-calculator">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Search Intent</p>
+            <h2>What this freelance rate calculator helps you do</h2>
+            <p class="section-subcopy">
+              This page is designed for freelancers who are trying to answer a practical question:
+              how much should I charge for a project without underpricing my work?
+            </p>
+          </div>
+        </div>
+        <div class="pro-grid">
+          <article class="pro-card">
+            <h3>Calculate a freelance hourly rate</h3>
+            <p>
+              Start from your target income, billable hours, and monthly business costs to estimate
+              a rate that can actually support your workload.
+            </p>
+          </article>
+          <article class="pro-card">
+            <h3>Turn that rate into a project quote</h3>
+            <p>
+              Add project hours, tax reserve, and a revision buffer so the final number is usable in a
+              real client conversation.
+            </p>
+          </article>
+          <article class="pro-card">
+            <h3>Price with a repeatable method</h3>
+            <p>
+              Instead of guessing from market averages alone, use a pricing floor you can explain and reuse
+              across new client work.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel panel-seo-copy" id="faq">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">FAQ</p>
+            <h2>Freelance pricing questions this tool answers</h2>
+          </div>
+        </div>
+        <div class="pro-grid">
+          <article class="pro-card">
+            <h3>How do I calculate my freelance hourly rate?</h3>
+            <p>
+              A sustainable freelance hourly rate usually starts with your monthly take-home goal, realistic
+              billable hours, business overhead, and a margin for tax and uncertainty.
+            </p>
+          </article>
+          <article class="pro-card">
+            <h3>How do I quote a freelance project?</h3>
+            <p>
+              Estimate project hours first, then apply a rate that already includes your cost structure.
+              If the scope may expand, raise the revision or risk buffer before sending the quote.
+            </p>
+          </article>
+          <article class="pro-card">
+            <h3>Why not use average market rates only?</h3>
+            <p>
+              Market averages can be useful context, but they do not know your billable capacity, expenses,
+              or profit needs. This calculator is meant to give you a defensible internal floor.
+            </p>
+          </article>
+        </div>
+      </section>
     </div>
 
     <script type="module" src="./src/app.js"></script>
   </body>
-  </html>
+</html>
